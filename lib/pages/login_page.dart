@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sua_carteira_investimentos/helpers/navigator.dart';
+import 'package:sua_carteira_investimentos/pages/dashboard_page.dart';
 
 enum AuthMode {LOGIN, SINGUP}
 
@@ -108,7 +110,9 @@ class _LoginPageState extends State<LoginPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          push(context, DashboardPage(), replace: true);
+                        },
                       ),
                     ],
                   ),
