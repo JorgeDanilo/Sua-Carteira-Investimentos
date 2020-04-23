@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sua_carteira_investimentos/helpers/navigator.dart';
+import 'package:sua_carteira_investimentos/pages/actives_list_page.dart';
 import 'package:sua_carteira_investimentos/pages/profile_page.dart';
 
 class DrawerList extends StatefulWidget {
@@ -30,7 +31,9 @@ class _DrawerListState extends State<DrawerList> {
               title: Text("Gerenciar Ativos"),
               subtitle: Text("Gerencie seus ativos aqui"),
               trailing: Icon(Icons.arrow_forward),
-              onTap: () {},
+              onTap: () {
+                push(context, ActiveListPage(), replace: false);
+              },
             ),
             ListTile(
               leading: Icon(Icons.timeline),

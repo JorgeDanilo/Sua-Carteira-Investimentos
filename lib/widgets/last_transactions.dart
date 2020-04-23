@@ -4,6 +4,11 @@ import 'package:sua_carteira_investimentos/widgets/heading.dart';
 import 'package:sua_carteira_investimentos/widgets/transation.dart';
 
 class LastTransactions extends StatelessWidget {
+
+  final double height;
+  final String name;
+  LastTransactions({this.name = "Últimas transações", this.height = 0.5});
+
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -14,14 +19,14 @@ class LastTransactions extends StatelessWidget {
           height: 10.0,
         ),
         Heading(
-          title: 'Últimas transações',
+          title: this.name,
         ),
         SizedBox(
           height: 25.0,
         ),
         Flexible(
           child: Container(
-            height: deviceSize.height * 0.5,
+            height: deviceSize.height * this.height,
             child: ListView.builder(
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),

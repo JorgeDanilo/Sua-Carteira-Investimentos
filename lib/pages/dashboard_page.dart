@@ -15,16 +15,6 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
-//    widget._populeDasboard();
-//    return Scaffold(
-//      appBar: AppBar(
-//        title: Text("Dashboard"),
-//        backgroundColor: Colors.orangeAccent,
-//        centerTitle: true,
-//      ),
-//      drawer: DrawerList(),
-//      body: _body(),
-//    );
     Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       drawer: DrawerList(),
