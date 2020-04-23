@@ -14,7 +14,7 @@ class _ActiveListPageState extends State<ActiveListPage> {
     Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       drawer: DrawerList(),
-      appBar: buildAppBar(),
+      appBar: buildAppBar(title: "Seus Ativos"),
       body: Stack(
         children: <Widget>[
           Container(
@@ -33,7 +33,7 @@ class _ActiveListPageState extends State<ActiveListPage> {
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     children: <Widget>[
-                      LastTransactions(name: "Seus Ativos", height: 0.8,),
+                      LastTransactions(height: 0.8,),
                     ],
                   ),
                 ),

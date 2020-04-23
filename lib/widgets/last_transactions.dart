@@ -7,7 +7,7 @@ class LastTransactions extends StatelessWidget {
 
   final double height;
   final String name;
-  LastTransactions({this.name = "Últimas transações", this.height = 0.5});
+  LastTransactions({this.name = "", this.height = 0.5});
 
   @override
   Widget build(BuildContext context) {
