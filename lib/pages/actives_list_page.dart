@@ -14,7 +14,7 @@ class _ActiveListPageState extends State<ActiveListPage> {
     Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       drawer: DrawerList(),
-      appBar: buildAppBar(title: "Seus Ativos"),
+      appBar: buildAppBar(title: "Seus Ativos", context: context),
       body: Stack(
         children: <Widget>[
           Container(

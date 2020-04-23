@@ -1,0 +1,1 @@
+CREATE TABLE active(id INTEGER PRIMARY KEY, name TEXT, description TEXT, timeInvestment TEXT, quatity INTEGER, unitaryValue DOUBLE, amount DOUBLE);

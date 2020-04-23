@@ -14,8 +14,8 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               height: 250,
               width: double.infinity,
-              child: Image.network(
-                url,
+              child: Image.asset(
+                "assets/images/logo_home.jpg",
                 fit: BoxFit.cover,
               ),
             ),
