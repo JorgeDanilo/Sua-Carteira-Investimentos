@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sua_carteira_investimentos/pages/drawer_list.dart';
 import 'package:sua_carteira_investimentos/widgets/app_bar.dart';
-import 'package:sua_carteira_investimentos/widgets/last_transactions.dart';
+import 'package:sua_carteira_investimentos/widgets/transactions.dart';
 
 class ActiveListPage extends StatefulWidget {
   @override
@@ -33,7 +33,7 @@ class _ActiveListPageState extends State<ActiveListPage> {
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     children: <Widget>[
-                      LastTransactions(height: 0.8,),
+                      Transactions(height: 0.8, isSpacing: false),
                     ],
                   ),
                 ),

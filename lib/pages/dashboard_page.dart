@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:sua_carteira_investimentos/constantes/contantes.dart';
-import 'package:sua_carteira_investimentos/model/active.dart';
-import 'package:sua_carteira_investimentos/model/time_of_investiment.dart';
 import 'package:sua_carteira_investimentos/pages/drawer_list.dart';
-import 'package:sua_carteira_investimentos/widgets/last_transactions.dart';
 import 'package:sua_carteira_investimentos/widgets/top_account_info.dart';
+import 'package:sua_carteira_investimentos/widgets/transactions.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -38,7 +34,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     children: <Widget>[
-                      LastTransactions(),
+                      Transactions(),
                     ],
                   ),
                 ),
