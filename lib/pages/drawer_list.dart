@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sua_carteira_investimentos/helpers/navigator.dart';
+import 'package:sua_carteira_investimentos/pages/profile_page.dart';
 
 class DrawerList extends StatefulWidget {
   @override
@@ -43,6 +45,15 @@ class _DrawerListState extends State<DrawerList> {
               subtitle: Text("Configure seu aplicativo aqui"),
               trailing: Icon(Icons.arrow_forward),
               onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.people),
+              title: Text("Perfil"),
+              subtitle: Text("Configure seu perfil aqui"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                push(context, ProfilePage(), replace: false);
+              },
             ),
           ],
         ),
