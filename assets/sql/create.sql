@@ -1,1 +1,2 @@
 CREATE TABLE active(id INTEGER PRIMARY KEY, name TEXT, description TEXT, timeInvestment TEXT, quatity INTEGER, unitaryValue DOUBLE, amount DOUBLE);
+CREATE TABLE user(id INTEGER PRIMARY KEY, name TEXT, password TEXT, email TEXT, phone TEXT, birthDate DATE,  photo TEXT, profission TEXT);
