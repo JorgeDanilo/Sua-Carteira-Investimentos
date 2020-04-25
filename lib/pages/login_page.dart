@@ -88,14 +88,14 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 15,),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Your Email",
+                      labelText: "Seus Email",
                       hasFloatingPlaceholder: true,
                     ),
                   ),
                   SizedBox(height: 20,),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Password",
+                      labelText: "Sua Senha",
                       hasFloatingPlaceholder: true,
                     ),
                   ),
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       MaterialButton(
                         onPressed: () {},
-                        child: Text("Forget Password ?"),
+                        child: Text("Esqueceu sua senha ?"),
                       ),
                       Expanded(
                         child: Container(),
@@ -135,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             SizedBox(height: 40,),
             Text(
-              "Don't have an account ?",
+              "Você ainda não tem conta ?",
               style: TextStyle(color: Colors.grey),
             ),
             FlatButton(
@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                 });
               },
               textColor: Colors.black87,
-              child: Text("Create Account"),
+              child: Text("Criar Conta"),
             ),
           ],
         ),
@@ -160,6 +160,7 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+//          TODO: here icon app
           Text(
             "Sua Carteira de Investimentos",
             style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w400),
@@ -190,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        "Create Account",
+                        "Criar Conta",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 28,
@@ -208,7 +209,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       controller: nameController,
                       decoration: InputDecoration(
-                        labelText: "Your Name",
+                        labelText: "Seu Nome",
                         hasFloatingPlaceholder: true,
                       ),
                     ),
@@ -222,7 +223,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       controller: emailController,
                       decoration: InputDecoration(
-                        labelText: "Your Email",
+                        labelText: "Seu Email",
                         hasFloatingPlaceholder: true,
                       ),
                     ),
@@ -239,13 +240,13 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       controller: passwordController,
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: "Sua Senha",
                         hasFloatingPlaceholder: true,
                       ),
                     ),
                     SizedBox(height: 20,),
                     Text(
-                      "Password must be at least 8 caracters and include a special character and number",
+                      "A senha deverá contar pelo menos 8 caratectes",
                       style: TextStyle(color: Colors.grey),
                     ),
                     SizedBox(height: 5,),
@@ -256,7 +257,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Container(),
                         ),
                         FlatButton(
-                          child: Text("Sign Up"),
+                          child: Text("Cadastrar"),
                           color: Color(0xFF4B9DFE),
                           textColor: Colors.white,
                           padding: EdgeInsets.only(left: 38, right: 38, top: 15, bottom: 15),
@@ -279,7 +280,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 40,),
-              Text("Already have an account?",
+              Text("Você já tem Conta?",
               style: TextStyle(color: Colors.grey),),
               FlatButton(
                 onPressed: () {
@@ -296,7 +297,7 @@ class _LoginPageState extends State<LoginPage> {
             alignment: Alignment.bottomCenter,
             child: FlatButton(
               child: Text(
-                "Terms & Conditions",
+                "Termos & Condições",
                 style: TextStyle(
                   color: Colors.grey
                 ),
