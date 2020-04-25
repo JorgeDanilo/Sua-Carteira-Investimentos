@@ -19,7 +19,11 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  final emailLoginController  = TextEditingController();
+  final passwordLoginController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
+  final _loginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,97 +63,114 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget loginCard(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(top: screenHeight / 4),
-          padding: EdgeInsets.only(left: 10, right: 10),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            elevation: 8,
-            child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Seus Email",
-                      hasFloatingPlaceholder: true,
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Sua Senha",
-                      hasFloatingPlaceholder: true,
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      MaterialButton(
-                        onPressed: () {},
-                        child: Text("Esqueceu sua senha ?"),
-                      ),
-                      Expanded(
-                        child: Container(),
-                      ),
-                      FlatButton(
-                        child: Text("Login"),
-                        color: Color(0xFF4B9DFE),
-                        textColor: Colors.white,
-                        padding: EdgeInsets.only(left: 38, right: 38, top: 15, bottom: 15),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
+    return Form(
+      key: _loginFormKey,
+      child: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(top: screenHeight / 4),
+            padding: EdgeInsets.only(left: 10, right: 10),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              elevation: 8,
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600,
                         ),
-                        onPressed: () {
-                          push(context, DashboardPage(), replace: true);
-                        },
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    SizedBox(height: 15,),
+                    TextFormField(
+                      validator: (value) {
+                        if(value.isEmpty) {
+                          return "Email é obrigatório";
+                        }
+                        return null;
+                      },
+                      controller: emailLoginController,
+                      decoration: InputDecoration(
+                        labelText: "Seu Email",
+                        hasFloatingPlaceholder: true,
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    TextFormField(
+                      controller: passwordLoginController,
+                      validator: (value) {
+                        if(value.isEmpty) {
+                          return "Senha é obrigatório";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Sua Senha",
+                        hasFloatingPlaceholder: true,
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        MaterialButton(
+                          onPressed: () {},
+                          child: Text("Esqueceu sua senha ?"),
+                        ),
+                        Expanded(
+                          child: Container(),
+                        ),
+                        FlatButton(
+                          child: Text("Login"),
+                          color: Color(0xFF4B9DFE),
+                          textColor: Colors.white,
+                          padding: EdgeInsets.only(left: 38, right: 38, top: 15, bottom: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          onPressed: () {
+                            login();
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 40,),
-            Text(
-              "Você ainda não tem conta ?",
-              style: TextStyle(color: Colors.grey),
-            ),
-            FlatButton(
-              onPressed: () {
-                setState(() {
-                  _authMode = AuthMode.SINGUP;
-                });
-              },
-              textColor: Colors.black87,
-              child: Text("Criar Conta"),
-            ),
-          ],
-        ),
-      ],
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 40,),
+              Text(
+                "Você ainda não tem conta ?",
+                style: TextStyle(color: Colors.grey),
+              ),
+              FlatButton(
+                onPressed: () {
+                  setState(() {
+                    _authMode = AuthMode.SINGUP;
+                  });
+                },
+                textColor: Colors.black87,
+                child: Text("Criar Conta"),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -318,6 +339,12 @@ class _LoginPageState extends State<LoginPage> {
       user.password = this.passwordController.text;
       var userSaved = UserBloc().save(user);
       print("User : ${userSaved}");
+      push(context, DashboardPage(), replace: true);
+    }
+  }
+
+  void login() {
+    if (_loginFormKey.currentState.validate()) {
       push(context, DashboardPage(), replace: true);
     }
   }
