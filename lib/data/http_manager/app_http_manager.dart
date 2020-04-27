@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:sua_carteira_investimentos/core/constants.dart';
-import 'package:sua_carteira_investimentos/data/http_manager.dart';
+import 'package:sua_carteira_investimentos/data/http_manager/http_manager.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
 import 'package:sua_carteira_investimentos/domain/app_exception.dart';
@@ -43,6 +43,7 @@ class AppHttpManager implements HttpManager {
   @override
   Future put({String url, Map body, Map<String, dynamic> query, Map<String, String> headers}) async {
     try {
+      print('Api Put request url $url, with $body');
       final response = await http.put(_queryBuilder(url, query), body: json.encode(body), headers: _headersBuilder(headers)).timeout(timeout, onTimeout: () {
         throw NetworkException();
       });
@@ -55,6 +56,7 @@ class AppHttpManager implements HttpManager {
   @override
   Future delete({String url, Map<String, dynamic> query, Map<String, String> headers}) async {
     try {
+      print('Api Delete request url $url');
       final response = await http.delete(_queryBuilder(url, query), headers: _headersBuilder(headers)).timeout(timeout, onTimeout: () {
         throw NetworkException();
       });
