@@ -3,6 +3,7 @@ import 'package:sua_carteira_investimentos/bloc/user_bloc.dart';
 import 'package:sua_carteira_investimentos/helpers/navigator.dart';
 import 'package:sua_carteira_investimentos/model/user.dart';
 import 'package:sua_carteira_investimentos/pages/dashboard_page.dart';
+import 'package:sua_carteira_investimentos/widgets/snack.dart';
 
 enum AuthMode {LOGIN, SINGUP}
 
@@ -331,15 +332,17 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void saveUser() {
+  Future<void> saveUser() async {
     if(_formKey.currentState.validate()) {
       User user = User();
       user.name = this.nameController.text;
       user.email = this.emailController.text;
       user.password = this.passwordController.text;
-      var userSaved = UserBloc().save(user);
-      print("User : ${userSaved}");
-      push(context, DashboardPage(), replace: true);
+      var userSaved = await UserBloc().save(user);
+      if (userSaved != null) {
+        Snack("Usuário Cadastrado com Sucesso!");
+        push(context, DashboardPage(), replace: true);
+      }
     }
   }
 
