@@ -1,7 +1,7 @@
 
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:sua_carteira_investimentos/di/di.config.dart';
+import 'package:sua_carteira_investimentos/di/di.iconfig.dart';
 
 final GetIt getIt = GetIt.instance;
 
