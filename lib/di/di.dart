@@ -6,4 +6,4 @@ import 'package:sua_carteira_investimentos/di/di.iconfig.dart';
 final GetIt getIt = GetIt.instance;
 
 @injectableInit
-void configureInjection() => $initGetIt(getIt());
+void configureInjection() => $initGetIt(getIt);

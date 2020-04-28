@@ -28,10 +28,10 @@ import 'package:get_it/get_it.dart';
 Future<void> $initGetIt(GetIt g, {String environment}) async {
   final serviceModule = _$ServiceModule();
   g.registerFactory<HttpManager>(() => AppHttpManager());
-  g.registerFactory<RemoteService>(() => AppRemoteService(g<HttpManager>()),
-      instanceName: 'default');
   g.registerFactory<RemoteService>(() => AppMockRemoteService(),
       instanceName: 'mock');
+  g.registerFactory<RemoteService>(() => AppRemoteService(g<HttpManager>()),
+      instanceName: 'default');
   final sharedPreferences = await serviceModule.dio;
   g.registerFactory<SharedPreferences>(() => sharedPreferences);
   g.registerFactory<Storage>(() => AppStorage(g<SharedPreferences>()));
@@ -40,10 +40,12 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
       g<RemoteService>('mock'),
       g<RemoteService>('default')));
   g.registerFactory<Repository>(
-      () => AppRepository(g<RemoteDataSource>(), g<LocalDataSource>()));
+          () => AppRepository(g<RemoteDataSource>(), g<LocalDataSource>()));
   g.registerFactory<SaveCityNameUseCase>(() => SaveCityName(g<Repository>()));
+  g.registerFactory<GetSavesCitiesUseCase>(
+          () => GetSavesCities(g<Repository>()));
   g.registerFactory<GetWeatherByCityNameUseCase>(
-      () => GetWeatherByCityName(g<Repository>(), g<SaveCityNameUseCase>()));
+          () => GetWeatherByCityName(g<Repository>(), g<SaveCityNameUseCase>()));
   g.registerFactory<HomeBloc>(() =>
       HomeBloc(g<GetWeatherByCityNameUseCase>(), g<GetSavesCitiesUseCase>()));
 }
