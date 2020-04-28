@@ -1,12 +1,11 @@
 import 'dart:io';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:sua_carteira_investimentos/core/constants.dart';
 import 'package:sua_carteira_investimentos/data/http_manager/http_manager.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
-import 'package:sua_carteira_investimentos/domain/app_exception.dart';
+import 'package:sua_carteira_investimentos/domain/exception/app_exception.dart';
 
 const timeout = Duration(seconds: 3);
 
