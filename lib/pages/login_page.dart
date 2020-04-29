@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sua_carteira_investimentos/bloc/user_bloc.dart';
 import 'package:sua_carteira_investimentos/helpers/navigator.dart';
+import 'package:sua_carteira_investimentos/model/user.dart';
 import 'package:sua_carteira_investimentos/pages/dashboard_page.dart';
 
 enum AuthMode {LOGIN, SINGUP}
@@ -12,6 +14,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   double screenHeight;
   AuthMode _authMode = AuthMode.LOGIN;
+
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -190,6 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 15,),
                   TextFormField(
+                    controller: nameController,
                     decoration: InputDecoration(
                       labelText: "Your Name",
                       hasFloatingPlaceholder: true,
@@ -197,6 +204,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 15,),
                   TextFormField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       labelText: "Your Email",
                       hasFloatingPlaceholder: true,
@@ -204,6 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 20,),
                   TextFormField(
+                    controller: passwordController,
                     decoration: InputDecoration(
                       labelText: "Password",
                       hasFloatingPlaceholder: true,
@@ -229,7 +238,9 @@ class _LoginPageState extends State<LoginPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadiusDirectional.circular(5),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          saveUser();
+                        },
                       )
                     ],
                   ),
@@ -270,6 +281,15 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ],
     );
+  }
+
+  void saveUser() {
+    User user = User();
+    user.name = this.nameController.text;
+    user.email = this.emailController.text;
+    user.password = this.passwordController.text;
+    var userSaved = UserBloc().save(user);
+    print("User : ${userSaved}");
   }
 }
 
